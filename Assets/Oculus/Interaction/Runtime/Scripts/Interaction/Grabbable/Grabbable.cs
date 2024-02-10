@@ -41,6 +41,8 @@ namespace Oculus.Interaction
         [SerializeField]
         private int _maxGrabPoints = -1;
 
+        public bool isGrabbed = false;
+
         public int MaxGrabPoints
         {
             get
@@ -165,6 +167,7 @@ namespace Oculus.Interaction
             }
 
             _activeTransformer.BeginTransform();
+            isGrabbed = true;
         }
 
         private void UpdateTransform()
@@ -185,6 +188,7 @@ namespace Oculus.Interaction
             }
             _activeTransformer.EndTransform();
             _activeTransformer = null;
+            isGrabbed = false;
         }
 
         protected override void OnDisable()
